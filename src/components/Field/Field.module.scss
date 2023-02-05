@@ -1,0 +1,40 @@
+.fieldWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    .label {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 136.19%;
+        color: #151317;
+        margin-bottom: 8px;
+    }
+    .field, .errorField {
+        border: none;
+        outline: none;
+        background: #F8F8F8;
+        border-radius: 8px;
+        font-size: 14px;
+        line-height: 16px;
+        color: #808185;
+        padding: 16px 8px 16px 16px;
+    }
+
+    .errorField {
+        outline: 2px solid #ff2252;
+    }
+    .hideIcon {
+        position: absolute;
+        right: 9px;
+        bottom: 7px;
+    }
+    .error {
+        font-size: 10px;
+        line-height: 12px;
+        color: #FF6161;
+        position: absolute;
+        left: 0;
+        bottom: -16px;
+    }
+}

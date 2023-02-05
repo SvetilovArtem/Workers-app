@@ -1,0 +1,31 @@
+.header {
+    padding: 64px 0;
+    color: #F8F8F8;
+    position: relative;
+    background: #512689;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .title {
+        font-size: 64px;
+        line-height: 75px;
+        color: #FFFFFF;
+        margin-bottom: 16px;
+    }
+    .text {
+        font-size: 20px;
+        line-height: 23px;
+        max-width: 846px;
+    }
+    .exit {
+        position: absolute;
+        right: 80px;
+        top: 32px;
+        border: 1px solid #F8F8F8;
+        border-radius: 8px;
+        padding: 8px 16px;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,23 @@
+.content {
+    padding-top: 49px;
+    display: flex;
+    justify-content: center;
+    color: #151317;
+    font-size: 16px;
+    line-height: 136.19%;
+    .desc {
+        max-width: 630px;
+        margin-right: 131px;
+
+    }
+    .phone, .email {
+        display: flex;
+        align-items: center;
+        svg {
+            margin-right: 10px;
+        }
+    }
+    .phone {
+        margin-bottom: 30px;
+    }
+}

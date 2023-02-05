@@ -1,0 +1,48 @@
+.header {
+    padding: 64px 0;
+    color: #F8F8F8;
+    position: relative;
+    background: #512689;
+    font-weight: 400;
+    padding-left: 188px;
+    display: flex;
+    align-items: center;
+    .profileDate {
+        display: flex;
+        align-items: center;
+        img {
+            border-radius: 50%;
+            margin-right: 32px;
+            width: 187px;
+            height: 187px;
+        }
+        .name {
+            font-size: 64px;
+            line-height: 75px;
+            color: #FFFFFF;
+            margin-bottom: 16px;
+        }
+        .role {
+            font-size: 32px;
+            line-height: 38px;
+            color: #FFFFFF;
+        }
+    }
+    .back, .exit {
+        position: absolute;
+        border: 1px solid #F8F8F8;
+        border-radius: 8px;
+        padding: 8px 16px;
+        cursor: pointer;
+        color: #FFFFFF;
+    }
+    .exit {
+        right: 80px;
+        top: 32px;
+
+    }
+    .back {
+        left: 80px;
+        top: 32px;
+    }
+}
