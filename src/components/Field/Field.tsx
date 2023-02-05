@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import IconCreator from '../../icons/IconCreator'
 import styles from './Field.module.scss'
 
@@ -67,12 +67,19 @@ const Field = (
 
 
   }
+  const [isShowSymbols, setIsShowSymbols] = useState(false)
+
+  const onShowHiddenSymbols = () => {
+    if(name === 'password') {
+      setIsShowSymbols(!isShowSymbols)
+    }
+  }
 
   return (
     <div className={styles.fieldWrapper}>
         <label htmlFor={name} className={styles.label}>{label}</label>
         <input 
-          type={type} 
+          type={isShowSymbols ? 'text' : type} 
           name={name} 
           value={value} 
           onChange={e => {
@@ -81,7 +88,10 @@ const Field = (
           }} 
           className={error ? styles.errorField : styles.field} 
         />
-        {(name === 'password' || name === 'passwordRepeat') && <div className={styles.hideIcon}><IconCreator type='hide' /></div>}
+        {(name === 'password' || name === 'passwordRepeat') && 
+          <div className={styles.hideIcon} onClick={onShowHiddenSymbols}>
+            <IconCreator type='hide' />
+          </div>}
         {error && <div className={styles.error}>Ошибка</div>}
     </div>
   )

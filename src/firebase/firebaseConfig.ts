@@ -17,9 +17,13 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // SIGN UP AND CREATE NEW USER
-const signUpWithEmailAndPassword = async (email:string, password:string) => {
+const signUpWithEmailAndPassword = async (email:string, password:string, dispatch:AppDispatch, navigate:NavigateFunction) => {
   try {
-    await createUserWithEmailAndPassword(auth, email, password).then(user => console.log(user))
+    await createUserWithEmailAndPassword(auth, email, password).then(user => {
+      dispatch(setIsAuth(true))
+      navigate('/main')
+      console.log('Добро пожаловать')
+    })
   } catch (error) {
     console.log(error)
   }
