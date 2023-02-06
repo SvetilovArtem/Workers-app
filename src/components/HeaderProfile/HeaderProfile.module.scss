@@ -41,8 +41,65 @@
         top: 32px;
 
     }
+    .exitIconBtn {
+        display: none;
+        position: absolute;
+        right: 27px;
+        top: 23px;
+        cursor: pointer;
+    }
+    .backIconBtn {
+        display: none;
+        position: absolute;
+        left: 33px;
+        top: 25px;
+        cursor: pointer;
+    }
     .back {
         left: 80px;
         top: 32px;
+    }
+}
+@media (max-width: 865px) {
+    .header {
+        padding: 64px 62px;
+        justify-content: center;
+        .profileDate {
+            .info {
+                margin-bottom: 16px;
+            }
+        }
+        .exit, .back {
+            display: none;
+        }
+        .exitIconBtn, .backIconBtn  {
+            display: block;
+        }
+    }
+}
+@media (max-width: 575px) {
+    .header {
+        .profileDate {
+            flex-direction: column-reverse;
+            img {
+                margin: 0;
+            }
+            .name {
+                font-size: 36px;
+                line-height: 42px;
+            }
+            .role {
+                font-size: 16px;
+                line-height: 19px;
+                text-align: center;
+            }
+        }
+
+    }
+
+}
+@media (max-width: 350px) {
+    .header {
+        padding: 64px 10px;
     }
 }

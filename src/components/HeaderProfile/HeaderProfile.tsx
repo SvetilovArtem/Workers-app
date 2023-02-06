@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { logout } from '../../firebase/firebaseConfig'
+import IconCreator from '../../icons/IconCreator'
 import { AppDispatch } from '../../redux/store'
 import styles from './HeaderProfile.module.scss'
 
@@ -19,6 +20,9 @@ const HeaderProfile = ({ name, img }:HeaderProfileProps) => {
         <NavLink to='/main' className={styles.back}>
             Назад
         </NavLink>
+        <NavLink to='/main' className={styles.backIconBtn}>
+            <IconCreator type='back' />
+        </NavLink>
         <div className={styles.profileDate}>
             <img src={img} alt="" />
             <div className={styles.info}>
@@ -28,6 +32,9 @@ const HeaderProfile = ({ name, img }:HeaderProfileProps) => {
         </div>
         <div className={styles.exit} onClick={e => logout(dispatch, navigate)}>
             Выход
+        </div>
+        <div className={styles.exitIconBtn} onClick={e => logout(dispatch, navigate)}>
+            <IconCreator type='exit'/>
         </div>
     </header>
   )

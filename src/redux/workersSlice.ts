@@ -8,7 +8,8 @@ export interface CounterState {
   selectedWorker: Worker,
   passwordValue: string,
   passwordRepeatValue: string,
-  isAuth: boolean
+  isAuth: boolean,
+  greeting: string
 }
 
 export const fetchWorkers = createAsyncThunk(
@@ -38,7 +39,8 @@ const initialState: CounterState = {
   },
   passwordValue: '',
   passwordRepeatValue: '',
-  isAuth: false
+  isAuth: false,
+  greeting: ''
 }
 
 export const counterSlice = createSlice({
@@ -59,6 +61,9 @@ export const counterSlice = createSlice({
     },
     setIsAuth: (state, action) => {
       state.isAuth = action.payload
+    },
+    setGreeting: (state, action) => {
+      state.greeting = action.payload
     }
    },
   extraReducers:  (builder) => {
@@ -77,6 +82,6 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setPerPage, setSelectedWorker, setPasswordRepeatValue, setPasswordValue, setIsAuth } = counterSlice.actions
+export const { setPerPage, setSelectedWorker, setPasswordRepeatValue, setPasswordValue, setIsAuth, setGreeting } = counterSlice.actions
 
 export default counterSlice.reducer

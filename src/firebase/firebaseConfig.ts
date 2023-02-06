@@ -1,7 +1,7 @@
 import { AppDispatch } from './../redux/store';
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth'
-import { setIsAuth } from '../redux/workersSlice';
+import { setGreeting, setIsAuth } from '../redux/workersSlice';
 import { NavigateFunction } from 'react-router-dom';
 
 const firebaseConfig = {
@@ -37,21 +37,24 @@ const logInWithEmailAndPassword = async (email:string, password:string, dispatch
     await signInWithEmailAndPassword(auth, email, password).then(resp => {
       if(resp.user) {
         dispatch(setIsAuth(true))
-        navigate('/main')
-        console.log('Добро пожаловать')
+        dispatch(setGreeting('Добро пожаловать!'))
+        setTimeout(() => navigate('/main'), 2000)
+        console.log(resp.user)
       } else {
         dispatch(setIsAuth(false))
-        console.log('Проверь введенные данные')
+
       }
       
     })
   } catch (error) {
     console.log(error)
+    dispatch(setGreeting('Проверьте введенные данные!'))
   }
 }
 const logout = async (dispatch:AppDispatch, navigate:NavigateFunction) => {
   await signOut(auth).then(resp => {
     dispatch(setIsAuth(false))
+    dispatch(setGreeting(''))
     navigate('/')
   })
 }

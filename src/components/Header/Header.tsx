@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { logout } from '../../firebase/firebaseConfig'
+import IconCreator from '../../icons/IconCreator'
 import { AppDispatch } from '../../redux/store'
 
 import styles from './Header.module.scss'
@@ -20,6 +21,9 @@ const Header = () => {
       </p>
       <div className={styles.exit} onClick={e => logout(dispatch, navigate)}>
         Выход
+      </div>
+      <div className={styles.exitIconBtn} onClick={e => logout(dispatch, navigate)}>
+        <IconCreator type='exit'/>
       </div>
     </header>
   )

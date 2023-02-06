@@ -21,3 +21,17 @@
         margin-bottom: 30px;
     }
 }
+@media (max-width: 865px) {
+    .content {
+        padding-top: 33px;
+        padding-left: 16px;
+        padding-right: 16px;
+        flex-direction: column-reverse;
+        .desc {
+            margin: 0;
+        }
+        .info {
+            margin-bottom: 34px;
+        }
+    }
+}
