@@ -5,7 +5,7 @@ import { setGreeting, setIsAuth } from '../redux/workersSlice';
 import { NavigateFunction } from 'react-router-dom';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD0XmDa09gXCppzEe4wPmBZkAiB-NcHZyw",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "workers-app-5bc98.firebaseapp.com",
   projectId: "workers-app-5bc98",
   storageBucket: "workers-app-5bc98.appspot.com",
