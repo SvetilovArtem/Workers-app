@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import IconCreator from '../../icons/IconCreator'
 import { AppDispatch } from '../../redux/store'
@@ -12,14 +12,15 @@ interface WorkerProps {
     dispatch: AppDispatch
 }
 const WorkerCard = ({worker, dispatch}:WorkerProps) => {
+  const [isActive, setIsActive] = useState(false)
   return (
     <div className={styles.worker}>
         <NavLink to='/profile' className={styles.user} onClick={() => dispatch(setSelectedWorker(worker))}>
             <img src={worker.avatar} alt={worker.first_name} />
             <div className={styles.name}>{worker.first_name}</div>
         </NavLink>
-        <div className={styles.icon}>
-        <IconCreator type='heart' />
+        <div className={styles.icon} onClick={() => setIsActive(!isActive)}>
+          <IconCreator type='heart' active={isActive} />
         </div>
     </div>
   )
