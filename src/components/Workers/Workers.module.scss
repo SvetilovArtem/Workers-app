@@ -11,10 +11,12 @@
     position: relative;
     padding: 9px 0px 9px 16px;
     border: 1px solid #151317;
+    background: transparent;
     border-radius: 8px;
-    margin-top: 36px;
     width: 170px;
+    display: block;
     margin: 0 auto;
+    margin-bottom: 15px;
     cursor: pointer;
     svg {
         top: calc(50% - 4.6px);

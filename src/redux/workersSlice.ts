@@ -9,19 +9,27 @@ export interface CounterState {
   passwordValue: string,
   passwordRepeatValue: string,
   isAuth: boolean,
-  greeting: string
+  greeting: string,
+  favorites: Worker[],
+  currentPage: number,
+  totalPages: number
 }
 
+interface fetchWorkersProps {
+  perPage: number,
+  currentPage: number
+}
 export const fetchWorkers = createAsyncThunk(
     'workers/getWorkers',
     
-    async function(per_page:number) {
-        const resp = await fetch(`https://reqres.in/api/users?per_page=${per_page}`, {
+    async function({perPage, currentPage}:fetchWorkersProps) {
+        const resp = await fetch(`https://reqres.in/api/users?per_page=${perPage}&page=${currentPage}`, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
     }})
         const data = resp.json()
+        console.log(data)
         return data
     },
 )
@@ -29,7 +37,7 @@ export const fetchWorkers = createAsyncThunk(
 const initialState: CounterState = {
   workers: [],
   status: '',
-  perPage: 8,
+  perPage: 4,
   selectedWorker: {
     id: 0,
     email: '',
@@ -40,7 +48,10 @@ const initialState: CounterState = {
   passwordValue: '',
   passwordRepeatValue: '',
   isAuth: false,
-  greeting: ''
+  greeting: '',
+  favorites: [],
+  currentPage: 1,
+  totalPages: 1
 }
 
 export const counterSlice = createSlice({
@@ -49,6 +60,9 @@ export const counterSlice = createSlice({
   reducers: { 
     setPerPage: (state, action) => {
       state.perPage = action.payload
+    },
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload
     },
     setSelectedWorker: (state, action) => {
       state.selectedWorker = action.payload
@@ -64,11 +78,21 @@ export const counterSlice = createSlice({
     },
     setGreeting: (state, action) => {
       state.greeting = action.payload
+    },
+    addToFavorites: (state, action) => {
+      const findItem = state.favorites.find(f => f.id === action.payload.id)
+      if(!findItem) {
+        state.favorites.push({ ...action.payload})
+      }
+    },
+    removeFromFavorites: (state, action) => {
+      state.favorites = state.favorites.filter(f => f.id !== action.payload.id)
     }
    },
   extraReducers:  (builder) => {
     builder.addCase(fetchWorkers.fulfilled, (state, action) => {
       state.workers = action.payload.data
+      state.totalPages = action.payload.total_pages
       state.status = ''
     })
     builder.addCase(fetchWorkers.pending, (state, action) => {
@@ -82,6 +106,15 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setPerPage, setSelectedWorker, setPasswordRepeatValue, setPasswordValue, setIsAuth, setGreeting } = counterSlice.actions
+export const { 
+  setPerPage, 
+  setSelectedWorker, 
+  setPasswordRepeatValue, 
+  setPasswordValue, 
+  setIsAuth, 
+  setGreeting,
+  addToFavorites,
+  removeFromFavorites,
+  setCurrentPage } = counterSlice.actions
 
 export default counterSlice.reducer

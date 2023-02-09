@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import IconCreator from '../../icons/IconCreator'
-import { AppDispatch } from '../../redux/store'
-import { setSelectedWorker } from '../../redux/workersSlice'
+import { AppDispatch, RootState } from '../../redux/store'
+import { addToFavorites, removeFromFavorites, setSelectedWorker } from '../../redux/workersSlice'
 import { Worker } from '../../types/Worker'
 
 import styles from './Worker.module.scss'
@@ -12,15 +13,27 @@ interface WorkerProps {
     dispatch: AppDispatch
 }
 const WorkerCard = ({worker, dispatch}:WorkerProps) => {
-  const [isActive, setIsActive] = useState(false)
+  let favorites = useSelector((state:RootState) => state.workersReducer.favorites)
+
+  function setFavorites() {
+
+    if(favorites.find(f => f.id === worker.id)) {
+      dispatch(removeFromFavorites(worker))
+      localStorage.setItem('favorites', JSON.stringify(favorites))
+    } else {
+      dispatch(addToFavorites(worker))
+      localStorage.setItem('favorites', JSON.stringify(favorites))
+    }
+  }
+
   return (
     <div className={styles.worker}>
         <NavLink to='/profile' className={styles.user} onClick={() => dispatch(setSelectedWorker(worker))}>
             <img src={worker.avatar} alt={worker.first_name} />
             <div className={styles.name}>{worker.first_name}</div>
         </NavLink>
-        <div className={styles.icon} onClick={() => setIsActive(!isActive)}>
-          <IconCreator type='heart' active={isActive} />
+        <div className={styles.icon} onClick={() => setFavorites()}>
+          <IconCreator type='heart' active={favorites.find(f => f.id === worker.id)} />
         </div>
     </div>
   )

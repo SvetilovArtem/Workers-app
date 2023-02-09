@@ -1,8 +1,9 @@
 import React from 'react'
+import { Worker } from '../types/Worker'
 
 interface IconCreatorProps {
     type: string,
-    active?: boolean
+    active?: Worker
 }
 
 const IconCreator = ({ type, active }:IconCreatorProps) => {

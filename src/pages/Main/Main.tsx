@@ -11,10 +11,11 @@ const Main = () => {
   const dispatch:AppDispatch = useDispatch()
   const workers = useSelector((state:RootState) => state.workersReducer.workers)
   const perPage = useSelector((state:RootState) => state.workersReducer.perPage)
+  const currentPage = useSelector((state:RootState) => state.workersReducer.currentPage)
 
   useEffect(() => {
-    dispatch(fetchWorkers(perPage))
-  }, [dispatch, perPage])
+    dispatch(fetchWorkers({perPage, currentPage}))
+  }, [dispatch, perPage, currentPage])
 
   return (
     <div className={styles.main}>
