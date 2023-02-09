@@ -17,13 +17,15 @@ const WorkerCard = ({worker, dispatch}:WorkerProps) => {
 
   function setFavorites() {
 
-    if(favorites.find(f => f.id === worker.id)) {
-      dispatch(removeFromFavorites(worker))
-      localStorage.setItem('favorites', JSON.stringify(favorites))
-    } else {
-      dispatch(addToFavorites(worker))
-      localStorage.setItem('favorites', JSON.stringify(favorites))
-    }
+      if(favorites.find(f => f.id === worker.id)) {
+        dispatch(removeFromFavorites(worker))
+        localStorage.setItem('favorites', JSON.stringify(favorites))
+
+      } else {
+        dispatch(addToFavorites(worker))
+        localStorage.setItem('favorites', JSON.stringify(favorites))
+
+      }
   }
 
   return (

@@ -29,7 +29,6 @@ export const fetchWorkers = createAsyncThunk(
                 'Content-Type': 'application/json',
     }})
         const data = resp.json()
-        console.log(data)
         return data
     },
 )
