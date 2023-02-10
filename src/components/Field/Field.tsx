@@ -58,7 +58,7 @@ const Field = (
       }
     }
     if(e.currentTarget.name === 'passwordRepeat') {
-      if(passwordValue !== passwordRepeatValue) {
+      if(passwordValue !== e.currentTarget.value) {
         setError(true)
       } else {
         setError(false)
@@ -70,7 +70,7 @@ const Field = (
   const [isShowSymbols, setIsShowSymbols] = useState(false)
 
   const onShowHiddenSymbols = () => {
-    if(name === 'password') {
+    if(name === 'password' || name === 'passwordRepeat') {
       setIsShowSymbols(!isShowSymbols)
     }
   }

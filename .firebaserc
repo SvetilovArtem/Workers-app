@@ -1,7 +1,8 @@
 {
   "projects": {
     "default": "workers-app-5bc98",
-    "workers-app": "workers-app-5bc98"
+    "workers-app": "workers-app-5bc98",
+    "workers-app-deploy": "workers-app-5bc98"
   },
   "targets": {},
   "etags": {}
