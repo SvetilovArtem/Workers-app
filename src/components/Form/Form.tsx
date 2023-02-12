@@ -81,8 +81,7 @@ const Form = () => {
           onChangeHandler={setValue} 
           error={passwordRepeatError} 
           setError={setPasswordRepeatError}
-          passwordValue={passwordValue}
-          passwordRepeatValue={passwordRepeatValue} />
+          passwordValue={passwordValue} />
         <Button 
           text='Зарегистрироваться' 
           email={emailValue}

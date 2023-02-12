@@ -12,6 +12,7 @@ const Main = () => {
   const workers = useSelector((state:RootState) => state.workersReducer.workers)
   const perPage = useSelector((state:RootState) => state.workersReducer.perPage)
   const currentPage = useSelector((state:RootState) => state.workersReducer.currentPage)
+  
 
   useEffect(() => {
     dispatch(fetchWorkers({perPage, currentPage}))

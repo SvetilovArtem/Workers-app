@@ -1,6 +1,6 @@
 <h1 align="center">Workers - App</h1>
 
-##Описание
+## Описание
 
 <p>Технологии: ReactJS, Redux Toolkit, Typescript, React router dom, firebase, scss.</p>
 
@@ -40,5 +40,5 @@
 <h3 align="center">Профиль</h3>
 <p align="center">
     <img src="https://imageup.ru/img77/4203054/2023-02-05_22-31-54.png">
-    При клике на карточку любого пользователя появляется странице с подробной информацией.
+    При клике на карточку любого пользователя появляется страница с подробной информацией.
 </p>

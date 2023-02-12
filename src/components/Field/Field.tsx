@@ -23,12 +23,12 @@ const Field = (
     setError, 
     value, 
     passwordValue, 
-    passwordRepeatValue,
+    
   }:FieldProps) => {
 
   const validateHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
 
-    const letters = RegExp(/[^A-zА-я]/)
+    const letters = RegExp(/^[A-zА-я]/)
     const emails = RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i)
     const passwords = RegExp(/(?=.*[0-9])(?=.*[a-z])[0-9a-zA-Z]{6,}/g)
     // (?=.*[0-9]) - строка содержит хотя бы одно число;
@@ -36,7 +36,7 @@ const Field = (
     // [0-9a-zA-Z!@#$%^&*]{6,} - строка состоит не менее, чем из 6 вышеупомянутых символов.
 
     if(e.currentTarget.name === 'name') {
-      if(letters.test(e.currentTarget.value)  && e.currentTarget.value.length >= 1) {
+      if(letters.test(e.currentTarget.value)) {
         setError(false)
       } else {
         setError(true)

@@ -32,6 +32,19 @@ export const fetchWorkers = createAsyncThunk(
         return data
     },
 )
+export const fetchWorker = createAsyncThunk(
+  'worker/getWorker',
+  
+  async function(id:number) {
+      const resp = await fetch(`https://reqres.in/api/users/${id}`, {
+          method: "GET",
+          headers: {
+              'Content-Type': 'application/json',
+  }})
+      const data = resp.json()
+      return data
+  },
+)
 
 const initialState: CounterState = {
   workers: [],
@@ -99,7 +112,18 @@ export const counterSlice = createSlice({
     })
     builder.addCase(fetchWorkers.rejected, (state, action) => {
       state.status = 'Error! 404'
-  })
+    })
+
+    builder.addCase(fetchWorker.fulfilled, (state, action) => {
+      state.selectedWorker = action.payload.data
+      state.status = ''
+    })
+    builder.addCase(fetchWorker.pending, (state, action) => {
+        state.status = 'Loading ...'
+    })
+    builder.addCase(fetchWorker.rejected, (state, action) => {
+      state.status = 'Error! 404'
+    })
   },
 
 })
