@@ -1,14 +1,14 @@
-import React from 'react'
-import Form from '../../components/Form/Form'
+import React from "react";
+import Form from "../../components/Form/Form";
 
-import styles from './SignUp.module.scss'
+import styles from "./SignUp.module.scss";
 
 const SignUp = () => {
   return (
     <div className={styles.login}>
-        <Form />
+      <Form />
     </div>
-  )
-}
+  );
+};
 
-export default SignUp
+export default SignUp;
